@@ -13,11 +13,11 @@
         <div>
             <ul id="navbar">
                 <li><a  href="index.html">Home</a></li>
-                <li><a  href="shop.htnl">Shop</a></li>
+                <li><a  href="shop.html">Shop</a></li>
                 <li><a href="blog.html">Blog</a></li>
                 <li><a   href="about.html">About</a></li>
-                <li><a class="active" href="contact.html">Contact</a></li>
-                <li id="lg-bag"><a href="cart.html"><i class="fa-solid fa-bag-shopping"></i></a></li>
+                <li><a  href="contact.html">Contact</a></li>
+                <li id="lg-bag"><a class="active" href="cart.html"><i class="fa-solid fa-bag-shopping"></i></a></li>
                 <a href="#" id="close"><i class="fa-solid fa-xmark"></i></a>
             </ul>
         </div>
@@ -32,47 +32,76 @@
         <h2>#let's_talk</h2>
         <p>LEAVE A MESSAGE,We love to hear from you!</p>
     </section>
+ <section id="cart"  class="section-p1">
+    <table width="100%">
+      <thead>
+        <tr>
+            <th>Remove</th>
+      <th>Image</th>
+      <th>Product</th>
+      <th>Prices</th>
+      <th>Quantity</th>
+      <th>Subtotal</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+            <td> <a href="#"><i class="far fa-times-circle"></i></a></td>
+            <td><img src="img/products/f1.jpg" alt=""></td>
+            <td>Cartoon Astronaut T-Shirts</td>
+            <td>$13</td>
+            <td><input type="number" value="1"></td>
+            <td>$13.9</td>
+        </tr>
+        <tr>
+            <td> <a href="#"><i class="far fa-times-circle"></i></a></td>
+            <td><img src="img/products/f2.jpg" alt=""></td>
+            <td>Cartoon Astronaut T-Shirts</td>
+            <td>$13</td>
+            <td><input type="number" value="1"></td>
+            <td>$13.9</td>
+        </tr>
+        <tr>
+            <td> <a href="#"><i class="far fa-times-circle"></i></a></td>
+            <td><img src="img/products/f3.jpg" alt=""></td>
+            <td>Cartoon T-Shirts</td>
+            <td>$12</td>
+            <td><input type="number" value="1"></td>
+            <td>$12.9</td>
+        </tr>
+      </tbody>
+    </table>
 
-    <section id="contact-details" class="section-p1">
-        <div class="details">
-            <span>GET IN TOUCH</span>
-            <h2>Visit one of our agency locations or contact us today</h2>
-            <h3>Head Office</h3>
-            <div>
-                <li>
-                    <i class="fa-solid fa-map"></i>
-                    <p>56 Glassford Street Glasgow G1 1UL New York</p>
-                </li>
-                <li>
-                    <i class="fa-regular fa-envelope"></i>
-                    <p>contact@example</p>
-                </li>
-                <li>
-                    <i class="fa-solid fa-phone"></i>
-                    <p>123456789</p>
-                </li>
-                <li>
-                    <i class="fa-regular fa-clock"></i>
-                    <p>Monday to Saturday</p>
-                </li>
-            </div>
-        </div>
-        <div class="map">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d230660.86924127114!2d81.80158454999999!3d25.40226375!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x398534c9b20bd49f%3A0xa2237856ad4041a!2sPrayagraj%2C%20Uttar%20Pradesh!5e0!3m2!1sen!2sin!4v1768319258528!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-        </div>
-    </section>
+ </section>
 
-
- <section id="newsletter" class="section-p1 section-m1" >
-        <div class="newstext">
-            <h4>Sign Up For Newsletter</h4>
-            <p>Get E-mail updates about our lastest shop and <span>special offers</span></p>
+ <section id="cart-add" class="section-p1">
+    <div id="coupon">
+        <h3>Apply Coupon</h3>
+        <div>
+            <input type="text" placeholder="Enter your Coupon">
+            <button class="normal">Apply</button>
         </div>
-        <div class="form">
-            <input type="text" placeholder="Your email address">
-            <button class="normal">Sign Up</button>
-        </div>
-    </section>
+    </div>
+    <div id="subtotal">
+        <h3>Cart Total</h3>
+        <table>
+            <tr>
+                <td>Cart Subtotal</td>
+                <td>$30</td>
+            </tr>
+            <tr>
+                <td>Shipping</td>
+                <td>Free</td>
+            </tr>
+            <tr>
+                <td><strong>Total</strong></td>
+                <td><strong>$35</strong></td>
+            </tr>
+        </table>
+        <button class="normal">Proceed to checkout</button>
+    </div>
+ </section>
+ 
     <footer class="section-p1">
         <div class="col">
             <img class="logo" src="img/logo.png" alt="">
