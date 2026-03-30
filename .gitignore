@@ -1,2 +1,7 @@
 node_modules/
+<<<<<<< HEAD
 .env
+=======
+.env
+ecommerce-backend
+>>>>>>> c514da5 (fronted pages added)
