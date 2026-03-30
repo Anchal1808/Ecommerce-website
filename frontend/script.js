@@ -1,52 +1,52 @@
-const bar=document.getElementById('bar');
-const close=document.getElementById('close');
-const nav=document.getElementById('navbar');
+const bar = document.getElementById('bar');
+const close = document.getElementById('close');
+const nav = document.getElementById('navbar');
 
-if(bar){
-    bar.addEventListener('click',()=>{
+if (bar) {
+    bar.addEventListener('click', () => {
         nav.classList.toggle('active');
-    })
-}
-if(close){
-    close.addEventListener('click',()=>{
-        nav.classList.remove('active');
-    })
+    });
 }
 
-/// Cart functionality
+if (close) {
+    close.addEventListener('click', () => {
+        nav.classList.remove('active');
+    });
+}
+
+// Add to cart
 let cartButtons = document.querySelectorAll('.cart');
+
 cartButtons.forEach((btn) => {
     btn.addEventListener('click', (e) => {
         e.preventDefault();
+
         const productCard = btn.closest('.pro');
         const name = productCard.querySelector('h5').innerText;
         const priceText = productCard.querySelector('h4').innerText;
-        const price = parseFloat(priceText.replace('$',''));
-        const img = productCard.querySelector('img').src;
+        const price = parseFloat(priceText.replace('$', ''));
+        const img = productCard.querySelector('img').getAttribute('src');
 
-        // Load existing cart from localStorage
         let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
-        // Check if product already exists
-        const existingProduct = cart.find(item => item.name === name);
+        const existing = cart.find(item => item.name === name);
 
-        if (existingProduct) {
-            existingProduct.qty += 1; // Increase quantity
+        if (existing) {
+            existing.qty += 1;
         } else {
             cart.push({ name, price, img, qty: 1 });
         }
 
-        // Save updated cart to localStorage
         localStorage.setItem('cart', JSON.stringify(cart));
 
-        alert(`${name} added to cart!`);
+        alert(name + " added to cart");
     });
 });
 
-// Function to render cart page
+// Render cart
 function renderCart() {
-    const cartTableBody = document.querySelector('#cart tbody');
-    if(!cartTableBody) return; // only for cart page
+    const cartTableBody = document.querySelector('#cart-items');
+    if (!cartTableBody) return;
 
     let cart = JSON.parse(localStorage.getItem('cart')) || [];
     cartTableBody.innerHTML = '';
@@ -59,8 +59,8 @@ function renderCart() {
 
         const tr = document.createElement('tr');
         tr.innerHTML = `
-            <td><a href="#" class="remove" data-index="${index}"><i class="far fa-times-circle"></i></a></td>
-            <td><img src="${item.img}" alt=""></td>
+            <td><a href="#" class="remove" data-index="${index}">❌</a></td>
+            <td><img src="${item.img}" width="50"></td>
             <td>${item.name}</td>
             <td>$${item.price}</td>
             <td><input type="number" value="${item.qty}" min="1" class="qty" data-index="${index}"></td>
@@ -72,21 +72,21 @@ function renderCart() {
     document.querySelector('#subtotal table tr:nth-child(1) td:nth-child(2)').innerText = `$${total.toFixed(2)}`;
     document.querySelector('#subtotal table tr:nth-child(3) td:nth-child(2) strong').innerText = `$${total.toFixed(2)}`;
 
-    // Remove item
+    // remove
     document.querySelectorAll('.remove').forEach(btn => {
         btn.addEventListener('click', (e) => {
             e.preventDefault();
-            const idx = btn.getAttribute('data-index');
+            let idx = btn.getAttribute('data-index');
             cart.splice(idx, 1);
             localStorage.setItem('cart', JSON.stringify(cart));
             renderCart();
         });
     });
 
-    // Update quantity
+    // quantity update
     document.querySelectorAll('.qty').forEach(input => {
         input.addEventListener('change', () => {
-            const idx = input.getAttribute('data-index');
+            let idx = input.getAttribute('data-index');
             cart[idx].qty = parseInt(input.value);
             localStorage.setItem('cart', JSON.stringify(cart));
             renderCart();
@@ -94,7 +94,7 @@ function renderCart() {
     });
 }
 
-// Call renderCart only if on cart page
-if(document.querySelector('#cart')) {
+// run on cart page
+if (document.querySelector('#cart-items')) {
     renderCart();
 }

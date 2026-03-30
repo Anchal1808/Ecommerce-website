@@ -1,9 +1,14 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const cors = require('cors');   // ✅ yaha add karo
+
 const app = express();
 const PORT = 3000;
-app.use(express.static('public'));
+
+app.use(cors());                // ✅ yaha add karo (routes se pehle)
 app.use(express.json());
+
+app.use(express.static('public'));
 
 // MongoDB connection
 mongoose.connect('mongodb://localhost:27017/ecommerce')
